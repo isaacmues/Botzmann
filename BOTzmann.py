@@ -19,6 +19,7 @@ testing_channel_id = int(os.getenv("TESTING_CHANNEL_ID"))
 tex_cmd = "tex>"
 python_cmd = "python>"
 bot_cmd = "bot>"
+fortune_cmd = "fortune>"
 
 # Schedule
 class_days = ["Mon", "Wed", "Fri"]
@@ -57,6 +58,11 @@ def pass_to_python(message):
     results = os.popen("python -c " + script).read()
     results = discord.utils.escape_markdown(results)
     return results
+
+
+def get_fortune():
+
+    return discord.utils.escape_markdown(os.popen("fortune").read())
 
 
 def is_not_holiday():
@@ -190,6 +196,10 @@ async def on_message(message):
 
         results = pass_to_python(message.content)
         await origin.send("**" + author_name + "** Python:\n" + results)
+
+    elif message.content.startswith(fortune_cmd):
+
+        await origin.send(get_fortune())
 
     # TODO add a few more commands
     elif message.content.startswith("bot> purge!") and message.author == admin:
