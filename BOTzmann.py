@@ -36,7 +36,7 @@ if False:
     end_hour = end_hour.strftime("%H:%M")
 
 
-dont_delete = ["BOTzmann.py", "main.tex", "reply.png", "holidays.txt", ".env"]
+dont_delete = ["BOTzmann.py", "main.tex", "reply.png", "holidays.txt", ".env", ".git", "README.md", ".gitignore"]
 
 
 def latex_render(message):
